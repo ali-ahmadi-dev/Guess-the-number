@@ -17,6 +17,7 @@ document.querySelector('.check').addEventListener('click',function(){
         document.querySelector('.message').textContent = ' 😒 عددی وجود ندارد'
     }else if(guess === secretNumber){
        document.querySelector('.message').textContent = "درست حدس زدی ایول به تو  🤗🤗"
+        document.querySelector('.number').textContent = secretNumber;
        document.querySelector('body').style.backgroundColor = "green";
     }else if(guess > secretNumber){
       if (score > 1) {
@@ -47,3 +48,16 @@ document.querySelector('.check').addEventListener('click',function(){
     }
 });
 // Check Btn End
+
+document.querySelector('.again').addEventListener('click' , function(){
+
+  score =20;
+  const secretNumber = Math.trunc(Math.random() * 20 ) + 1;
+  document.querySelector('.message').textContent = 'حدس بزن  عدد چیه ....'
+  document.querySelector('body').style.backgroundColor = "#2f2e2e";
+   document.querySelector('.score').textContent = score;
+   document.querySelector('.guess').value = '';
+    document.querySelector('.number').textContent = "?";
+
+  
+})
