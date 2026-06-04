@@ -17,6 +17,7 @@ document.querySelector('.check').addEventListener('click',function(){
         document.querySelector('.message').textContent = ' 😒 عددی وجود ندارد'
     }else if(guess === secretNumber){
        document.querySelector('.message').textContent = "درست حدس زدی ایول به تو  🤗🤗"
+       document.querySelector('body').style.backgroundColor = "green";
     }else if(guess > secretNumber){
       if (score > 1) {
       document.querySelector('.message').textContent = "عدد خیلی بالا زدی  بیا پایین تر 🔺 "
@@ -26,6 +27,7 @@ document.querySelector('.check').addEventListener('click',function(){
              score = 0;
             document.querySelector('.score').textContent = score;
             document.querySelector('.message').textContent = "شما بازی را باختید 😔";
+                  document.querySelector('body').style.backgroundColor = "red";
         }
 
     }else if(guess < secretNumber){
@@ -39,6 +41,7 @@ document.querySelector('.check').addEventListener('click',function(){
        score = 0;
        document.querySelector('.score').textContent = score;
        document.querySelector('.message').textContent = "شما بازی را باختید 😔";
+        document.querySelector('body').style.backgroundColor = "#b23737";
       }
 
     }
