@@ -10,47 +10,75 @@ let secretNumber = Math.trunc(Math.random() * 20 ) + 1;
 let score = 20;
 let highscore = 0;
 
+
+const displayMessage = function( Class  , message){
+       document.querySelector(Class).textContent = message;
+}
+
 // Start  Check Btn
 document.querySelector('.check').addEventListener('click',function(){
     const guess = Number( document.querySelector('.guess').value);
     if (!guess) {
-        document.querySelector('.message').textContent = ' 😒 عددی وجود ندارد'
+      displayMessage( '.message' ,'😒 عددی وجود ندارد')
+        // document.querySelector('.message').textContent = ' 😒 عددی وجود ندارد'
     }else if(guess === secretNumber){
-       document.querySelector('.message').textContent = "درست حدس زدی ایول به تو  🤗🤗"
-        document.querySelector('.number').textContent = secretNumber;
+         displayMessage( '.message' , "درست حدس زدی ایول به تو  🤗🤗")
+      //  document.querySelector('.message').textContent = "درست حدس زدی ایول به تو  🤗🤗"
+         displayMessage( '.number' , secretNumber )
+        // document.querySelector('.number').textContent = secretNumber;
        document.querySelector('body').style.backgroundColor = "green";
        if (score > highscore) {
         highscore = score;
-        document.querySelector('.highscore').textContent = highscore ;
+         displayMessage( '.highscore' , highscore)
+        // document.querySelector('.highscore').textContent = highscore ;
        }
  
-    }else if(guess > secretNumber){
-      if (score > 1) {
-      document.querySelector('.message').textContent = "عدد خیلی بالا زدی  بیا پایین تر 🔺 "
+    }else if (guess !== secretNumber) {
+            if (score > 1) {
+                  displayMessage( '.message' , guess > secretNumber ? "عدد خیلی بالا زدی  بیا پایین تر 🔺 " : "عدد خیلی پایین  زدی  بیا بالا تر 🔻 " )
+      // document.querySelector('.message').textContent = guess > secretNumber ? "عدد خیلی بالا زدی  بیا پایین تر 🔺 " : "عدد خیلی پایین  زدی  بیا بالا تر 🔻 " 
        score--;
         document.querySelector('.score').textContent = score;
         }else{
              score = 0;
-            document.querySelector('.score').textContent = score;
-            document.querySelector('.message').textContent = "شما بازی را باختید 😔";
-                  document.querySelector('body').style.backgroundColor = "red";
+                displayMessage('.score' , score)
+                displayMessage('.message' ,"شما بازی را باختید 😔")
+            // document.querySelector('.score').textContent = score;
+            // document.querySelector('.message').textContent = "شما بازی را باختید 😔";
+            document.querySelector('body').style.backgroundColor = "red";
         }
-
-    }else if(guess < secretNumber){
-
-      if (score > 1 ) {
-       document.querySelector('.message').textContent = "عدد خیلی پایین  زدی  بیا بالا تر 🔻 "
-      score--;
-      document.querySelector('.score').textContent = score;
-
-      }else{
-       score = 0;
-       document.querySelector('.score').textContent = score;
-       document.querySelector('.message').textContent = "شما بازی را باختید 😔";
-        document.querySelector('body').style.backgroundColor = "#b23737";
-      }
-
     }
+    
+    
+    
+    
+    // else if(guess > secretNumber){
+    //   if (score > 1) {
+    //   document.querySelector('.message').textContent = "عدد خیلی بالا زدی  بیا پایین تر 🔺 "
+    //    score--;
+    //     document.querySelector('.score').textContent = score;
+    //     }else{
+    //          score = 0;
+    //         document.querySelector('.score').textContent = score;
+    //         document.querySelector('.message').textContent = "شما بازی را باختید 😔";
+    //               document.querySelector('body').style.backgroundColor = "red";
+    //     }
+
+    // }else if(guess < secretNumber){
+
+    //   if (score > 1 ) {
+    //    document.querySelector('.message').textContent = "عدد خیلی پایین  زدی  بیا بالا تر 🔻 "
+    //   score--;
+    //   document.querySelector('.score').textContent = score;
+
+    //   }else{
+    //    score = 0;
+    //    document.querySelector('.score').textContent = score;
+    //    document.querySelector('.message').textContent = "شما بازی را باختید 😔";
+    //     document.querySelector('body').style.backgroundColor = "#b23737";
+    //   }
+
+    // }
 });
 // Check Btn End
 
@@ -58,11 +86,14 @@ document.querySelector('.again').addEventListener('click' , function(){
 
   score =20;
   secretNumber = Math.trunc(Math.random() * 20 ) + 1;
-  document.querySelector('.message').textContent = 'حدس بزن  عدد چیه ....'
+           displayMessage('.message' , 'حدس بزن  عدد چیه ....' )
+  // document.querySelector('.message').textContent = 'حدس بزن  عدد چیه ....'
   document.querySelector('body').style.backgroundColor = "#2f2e2e";
-   document.querySelector('.score').textContent = score;
+         displayMessage('.score' ,  score)
+  //  document.querySelector('.score').textContent = score;
    document.querySelector('.guess').value = '';
-    document.querySelector('.number').textContent = "?";
+          displayMessage('.number' , "?" )
+    // document.querySelector('.number').textContent = "?";
 
   
 })
