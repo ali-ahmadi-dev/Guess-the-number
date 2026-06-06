@@ -3,12 +3,12 @@
 
 
 // Method math
-const secretNumber = Math.trunc(Math.random() * 20 ) + 1;
+let secretNumber = Math.trunc(Math.random() * 20 ) + 1;
 //  Method math End
 
 
 let score = 20;
-
+let highscore = 0;
 
 // Start  Check Btn
 document.querySelector('.check').addEventListener('click',function(){
@@ -19,6 +19,11 @@ document.querySelector('.check').addEventListener('click',function(){
        document.querySelector('.message').textContent = "درست حدس زدی ایول به تو  🤗🤗"
         document.querySelector('.number').textContent = secretNumber;
        document.querySelector('body').style.backgroundColor = "green";
+       if (score > highscore) {
+        highscore = score;
+        document.querySelector('.highscore').textContent = highscore ;
+       }
+ 
     }else if(guess > secretNumber){
       if (score > 1) {
       document.querySelector('.message').textContent = "عدد خیلی بالا زدی  بیا پایین تر 🔺 "
@@ -52,7 +57,7 @@ document.querySelector('.check').addEventListener('click',function(){
 document.querySelector('.again').addEventListener('click' , function(){
 
   score =20;
-  const secretNumber = Math.trunc(Math.random() * 20 ) + 1;
+  secretNumber = Math.trunc(Math.random() * 20 ) + 1;
   document.querySelector('.message').textContent = 'حدس بزن  عدد چیه ....'
   document.querySelector('body').style.backgroundColor = "#2f2e2e";
    document.querySelector('.score').textContent = score;
